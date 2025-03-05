@@ -19,6 +19,7 @@ class TestHelperFunctions(unittest.TestCase):
         self.assertEqual(get_mimetype(".cbz"), "application/zip")
         self.assertEqual(get_mimetype(".cbr"), "application/x-rar")
 
+
     @patch('cps.subproc_wrapper.process_open')
     def test_process_wait(self, mock_process_open):
         mock_process = MagicMock()
