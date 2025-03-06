@@ -9,7 +9,7 @@ on:
 
 jobs:
   load_test:
-    #if: github.event.pull_request.merged == true  # Ensures it runs only when merged
+    #if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
@@ -32,11 +32,11 @@ jobs:
 
       - name: Run Medium Load Test
         run: |
-          locust -f locustFile.py --headless --users 20 --spawn-rate 5 --run-time 20s --html=report_medium.html --csv=report_medium
+          locust -f locustFile.py --headless --users 50 --spawn-rate 5 --run-time 10s --html=report_medium.html --csv=report_medium
 
       - name: Run Large Load Test
         run: |
-          locust -f locustFile.py --headless --users 50 --spawn-rate 10 --run-time 30s --html=report_large.html --csv=report_large
+          locust -f locustFile.py --headless --users 100 --spawn-rate 10 --run-time 10s --html=report_large.html --csv=report_large
 
       - name: Upload Small Test Report
         uses: actions/upload-artifact@v4
